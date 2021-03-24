@@ -17,7 +17,7 @@
     {
       "channel": "0",
       "varName": "",
-      "message": "**Steam profil linki belirtmelisin.**",
+      "message": "<a:nonono:802921187931455499> **Steam profil linki belirtmelisin.**",
       "storage": "0",
       "varName2": "",
       "iffalse": "0",
@@ -46,7 +46,7 @@
       "name": "Check Variable"
     },
     {
-      "code": "const a = tempVars(\"link\");\nlet b;\nlet c;\n\nif(a.endsWith(\"/\")){\n    b = a.length - 1;\n}\n\nelse {\n    b = a.length;\n}\n    \nif(a.includes('https:')){\n    c = a.slice(30, b);\n}\n\nelse {\n    c = a.slice(29, b);\n}\nActions.storeValue(c, 1, \"vanityurl\", cache);",
+      "code": "const a = tempVars(\"link\");\nlet b = a.split(\"/\");\nlet c = b[4];\nActions.storeValue(c, 1, \"vanityurl\", cache);",
       "behavior": "0",
       "interpretation": "1",
       "storage": "0",
@@ -69,7 +69,7 @@
       "name": "Store Json From WebAPI"
     },
     {
-      "code": "const SteamID = require('steamid');\nconst sid = new SteamID(`${tempVars(\"steamid64\")}`);\nconst steamid1 = sid.getSteam2RenderedID(true);\nsteamid1.replace(\"undefined\", \"Bulunamadı\");\nActions.storeValue(steamid1, 1, \"steamid1\", cache);",
+      "code": "const SteamID = require('steamid');\nconst sid = new SteamID(`${tempVars(\"steamid64\")}`);\nconst steamid1 = sid.getSteam2RenderedID(true);\nActions.storeValue(steamid1, 1, \"steamid1\", cache);",
       "behavior": "0",
       "interpretation": "1",
       "storage": "0",
@@ -103,7 +103,7 @@
       "name": "Check Variable"
     },
     {
-      "code": "const SteamID = require('steamid');\nconst a = tempVars(\"link\");\nlet b;\nlet c;\n\nif(a.endsWith(\"/\")){\n    b = a.length - 1;\n}\n\nelse {\n    b = a.length;\n}\n    \nif(a.includes('https:')){\n    c = a.slice(36, b);\n}\n\nelse {\n    c = a.slice(35, b);\n}\n\nconst sid = new SteamID(c);\nconst steamid2 = sid.getSteam2RenderedID(true);\nsteamid2.replace(\"undefined\", \"Bulunamadı\");\nActions.storeValue(steamid2, 1, \"steamid2\", cache);",
+      "code": "const SteamID = require('steamid');\nconst a = tempVars(\"link\");\nlet b = a.split(\"/\");\nlet c = b[4];\nconst sid = new SteamID(c);\nconst steamid2 = sid.getSteam2RenderedID(true);\nActions.storeValue(steamid2, 1, \"steamid2\", cache);",
       "behavior": "0",
       "interpretation": "1",
       "storage": "0",
