@@ -1,0 +1,162 @@
+{
+  "name": "hexid",
+  "permissions": "NONE",
+  "restriction": "1",
+  "_id": "cTJcm",
+  "actions": [
+    {
+      "condition": "0",
+      "comparison": "0",
+      "value": "1",
+      "iftrue": "2",
+      "iftrueVal": "4",
+      "iffalse": "0",
+      "iffalseVal": "4",
+      "name": "Check Parameters"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "<a:nonono:802921187931455499> **Steam profil linki belirtmelisin.**",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "info": "0",
+      "infoIndex": "1",
+      "storage": "1",
+      "varName": "link",
+      "name": "Store Command Params"
+    },
+    {
+      "storage": "1",
+      "varName": "link",
+      "comparison": "5",
+      "value": "\"/id/\"",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "11",
+      "name": "Check Variable"
+    },
+    {
+      "code": "const a = tempVars(\"link\");\nlet b = a.split(\"/\");\nlet c = b[4];\nActions.storeValue(c, 1, \"vanityurl\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "token": "",
+      "user": "",
+      "pass": "",
+      "url": "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=STEAMWEBAPIKEY&vanityurl=${tempVars(\"vanityurl\")}",
+      "path": "response.steamid",
+      "storage": "1",
+      "varName": "steamid64",
+      "debugMode": "0",
+      "headers": "",
+      "reUse": "1",
+      "name": "Store Json From WebAPI"
+    },
+    {
+      "code": "const heaven = require('heaven.hex');\nconst steamid1 = heaven.steamhexhesapla(`https://steamcommunity.com/profiles/${tempVars(\"steamid64\")}`,{steamprefix:false});\nActions.storeValue(steamid1, 1, \"steamid1\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "${member} **Steam Hex ID:** `${tempVars(\"steamid1\")}`\n\n${tempVars(\"link\")}",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "storage": "1",
+      "varName": "link",
+      "comparison": "5",
+      "value": "\"/profiles/\"",
+      "iftrue": "0",
+      "iftrueVal": "",
+      "iffalse": "2",
+      "iffalseVal": "15",
+      "name": "Check Variable"
+    },
+    {
+      "code": "const a = tempVars(\"link\");\nlet b = a.split(\"/\");\nlet c = b[4];\nconst heaven = require('heaven.hex');\nconst steamid2 = heaven.steamhexhesapla(`https://steamcommunity.com/profiles/${c}`,{steamprefix:false});\nActions.storeValue(steamid2, 1, \"steamid2\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "${member} **Steam Hex ID:** `${tempVars(\"steamid2\")}`\n\n${tempVars(\"link\")}",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    },
+    {
+      "name": "End Action Sequence"
+    },
+    {
+      "token": "",
+      "user": "",
+      "pass": "",
+      "url": "http://api.steampowered.com/ISteamUser/ResolveVanityURL/v0001/?key=STEAMWEBAPIKEY&vanityurl=${tempVars(\"link\")}",
+      "path": "response.steamid",
+      "storage": "1",
+      "varName": "steamid64",
+      "debugMode": "0",
+      "headers": "",
+      "reUse": "1",
+      "name": "Store Json From WebAPI"
+    },
+    {
+      "code": "const heaven = require('heaven.hex');\nconst steamid3 = heaven.steamhexhesapla(`https://steamcommunity.com/profiles/${tempVars(\"steamid64\")}`,{steamprefix:false});\nActions.storeValue(steamid3, 1, \"steamid3\", cache);",
+      "behavior": "0",
+      "interpretation": "1",
+      "storage": "0",
+      "varName": "",
+      "VTypeSelect": "0",
+      "CVTypeValue": "",
+      "name": "Run Script"
+    },
+    {
+      "channel": "0",
+      "varName": "",
+      "message": "${member} **Steam Hex ID:** `${tempVars(\"steamid3\")}`\n\nhttps://steamcommunity.com/id/${tempVars(\"link\")}/",
+      "storage": "0",
+      "varName2": "",
+      "iffalse": "0",
+      "iffalseVal": "",
+      "name": "Send Message"
+    }
+  ]
+}
