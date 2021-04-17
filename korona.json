@@ -1,0 +1,117 @@
+{
+    "name": "korona",
+    "permissions": "NONE",
+    "restriction": "1",
+    "_id": "KNFDq",
+    "actions": [
+      {
+        "token": "",
+        "user": "",
+        "pass": "",
+        "url": "https://corona.lmao.ninja/v2/countries/TR",
+        "path": "cases",
+        "storage": "1",
+        "varName": "toplamvaka",
+        "debugMode": "0",
+        "headers": "",
+        "reUse": "1",
+        "name": "Store Json From WebAPI"
+      },
+      {
+        "sourceDate": "${new Date()}",
+        "dateLanguage": "tr",
+        "modeStorage": "1",
+        "info": "0",
+        "buildInput": "DD MMMM YYYY",
+        "storage": "1",
+        "varName": "aa",
+        "name": "Store Date Info Plus"
+      },
+      {
+        "token": "",
+        "user": "",
+        "pass": "",
+        "url": "https://corona.lmao.ninja/v2/countries/TR",
+        "path": "deaths",
+        "storage": "1",
+        "varName": "toplamolum",
+        "debugMode": "0",
+        "headers": "",
+        "reUse": "1",
+        "name": "Store Json From WebAPI"
+      },
+      {
+        "token": "",
+        "user": "",
+        "pass": "",
+        "url": "https://corona.lmao.ninja/v2/countries/TR",
+        "path": "recovered",
+        "storage": "1",
+        "varName": "iyilesen",
+        "debugMode": "0",
+        "headers": "",
+        "reUse": "1",
+        "name": "Store Json From WebAPI"
+      },
+      {
+        "token": "",
+        "user": "",
+        "pass": "",
+        "url": "https://corona.lmao.ninja/v2/countries/TR",
+        "path": "active",
+        "storage": "1",
+        "varName": "aktifvaka",
+        "debugMode": "0",
+        "headers": "",
+        "reUse": "1",
+        "name": "Store Json From WebAPI"
+      },
+      {
+        "title": "Türkiye COVID-19 İstatistikleri",
+        "author": "",
+        "color": "RANDOM",
+        "url": "",
+        "authorIcon": "",
+        "authorUrl": "",
+        "imageUrl": "",
+        "thumbUrl": "",
+        "timestamp": "false",
+        "debug": "false",
+        "text": "",
+        "year": "",
+        "month": "",
+        "day": "",
+        "hour": "",
+        "minute": "",
+        "second": "",
+        "storage": "1",
+        "varName": "embed",
+        "name": "Create Embed Message"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "message": ":brown_circle: **Toplam Vaka:** ${tempVars(\"toplamvaka\").toLocaleString().replace(/,/g, \".\")}\n:yellow_circle: **Aktif Vaka:** ${tempVars(\"aktifvaka\").toLocaleString().replace(/,/g, \".\")}\n\n:green_circle: **İyileşen sayısı:** ${tempVars(\"iyilesen\").toLocaleString().replace(/,/g, \".\")}\n:red_circle: **Ölüm sayısı:** ${tempVars(\"toplamolum\").toLocaleString().replace(/,/g, \".\")}\n",
+        "name": "Set Embed Description"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "message": "${tempVars(\"aa\")}",
+        "footerIcon": "",
+        "name": "Set Embed Footer"
+      },
+      {
+        "storage": "1",
+        "varName": "embed",
+        "channel": "0",
+        "varName2": "",
+        "storage3": "0",
+        "varName3": "",
+        "iffalse": "0",
+        "iffalseVal": "",
+        "messageContent": "",
+        "name": "Send Embed Message"
+      }
+    ]
+  }
